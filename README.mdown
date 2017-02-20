@@ -3,14 +3,21 @@
 WARNING: This probably require some tweaking to work for your specific case! Use this as an example :)
 
 This bundle takes an email expense report and copy a tab separated string to the clipboard.
-This can then be pasted into spreadsheet to record the expense (for budget tracking etc.)
+In the process it converts the local currency value to USD.
+
+This can then be pasted into spreadsheet to record the expense (for budget tracking etc.).
+
+The result is something like
+
+```
+Doe, John - JavaOne	travel	Q4		119.22	IE12345678	1000.0 NOK	
+```
 
 Allows you to do the following actions:
 
  * Get Expense Info
  * Get Expense Info (Append) - same as above but useful for multiple messages as it will append to clipboard
  
-
 # Installation
 
 ```
@@ -20,6 +27,10 @@ git clone https://github.com/maxandersen/expenses.mmBundle
 ```
 
 Then mailmate should have a `Commands > Expenses` menu where you can operate on the Expenses.
+
+# Tweaking the output
+
+If the output does not look exactly as you want it you can edit https://github.com/maxandersen/Expenses.mmBundle/blob/master/Support/bin/getinfo#L49[getinfo]
 
 # License
 
