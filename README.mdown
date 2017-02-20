@@ -1,0 +1,33 @@
+# Expenses MailMate Bundle - for working with Red Hat's very specific expense system
+
+WARNING: This probably require some tweaking to work for your specific case! Use this as an example :)
+
+This bundle takes an email expense report and copy a tab separated string to the clipboard.
+This can then be pasted into spreadsheet to record the expense (for budget tracking etc.)
+
+Allows you to do the following actions:
+
+ * Get Expense Info
+ * Get Expense Info (Append) - same as above but useful for multiple messages as it will append to clipboard
+ 
+
+# Installation
+
+```
+mkdir -p ~/Library/Application Support/MailMate/Bundles
+cd ~/Library/Application Support/MailMate/Bundles
+git clone https://github.com/maxandersen/expenses.mmBundle
+```
+
+Then mailmate should have a `Commands > Expenses` menu where you can operate on the Expenses.
+
+# License
+
+If not otherwise specified (see below), files in this repository fall under the following license:
+
+	Permission to copy, use, modify, sell and distribute this
+	software is granted. This software is provided "as is" without
+	express or implied warranty, and with no claim as to its
+	suitability for any purpose.
+
+An exception is made for files in readable text which contain their own license information, or files where an accompanying file exists (in the same directory) with a “-license” suffix added to the base-name name of the original file, and an extension of txt, html, or similar.

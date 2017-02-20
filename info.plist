@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>contactEmailRot13</key>
+	<string>znaqrefr@erqung.pbz</string>
+	<key>contactName</key>
+	<string>Max Rydahl Andersen</string>
+	<key>description</key>
+	<string>Commands for Red Hat Expense filing</string>
+	<key>name</key>
+	<string>Expenses</string>
+	<key>uuid</key>
+	<string>45F4530D-D26A-4251-96B8-435A56E60B24</string>
+</dict>
+</plist>

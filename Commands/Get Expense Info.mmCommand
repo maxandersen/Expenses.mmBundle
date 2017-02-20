@@ -1,0 +1,11 @@
+{
+	name          = 'Get Expense Info';
+	uuid          = 'BA20E5C6-833E-4FC7-863E-B688E037D08B';
+	environment   = 'MM_APPEND=false\nMM_FROM=${from}\nMM_SUBJECT=${subject.prefix:+${subject.prefix} }${subject.blob:+[${subject.blob}] }${subject.body}\nMM_MESSAGE_ID=${message-id.split}\n';
+	output        = 'actions';
+	input	      = 'canonical';
+	keyEquivalent = '~c';
+	command       = '#!/bin/bash\n"${MM_BUNDLE_SUPPORT}/bin/getinfo"\n';
+}
+
+

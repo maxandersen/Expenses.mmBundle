@@ -1,0 +1,62 @@
+#!/usr/bin/ruby
+# encoding: UTF-8
+
+require "shellwords"
+
+header = "* '''Date:''' #{ENV["MM_DATE"]}\n* '''From:''' #{ENV["MM_FROM"]}\n* '''To:''' #{ENV["MM_TO"]}\n* '''Subject:''' #{ENV["MM_SUBJECT"]}\n\n"
+body = $stdin.read
+
+# Reformat
+body = body.gsub(/((?:^> .*)+)/m) do |m|
+    "<blockquote>" + m.gsub(/^>\s*/,"") + "</blockquote>"
+end
+
+from = 'unknown'
+if match = body.match(/\| From \| <img.*\| (.*)<img/i)
+  from = match.captures[0]
+end
+
+purpose = 'unknown'
+if match = body.match(/Purpose \|.*\| (.*)<img/i)
+  purpose = match.captures[0]
+end
+
+total = 'unknown'
+if match = body.match(/Expense Report Total \|.*\| (.*) (.*)<img/i)
+  totalstr = match.captures[0]
+  total = match.captures[0].gsub(",","").to_f ## have to remove , to get ruby to parse US based numbers
+  currency = match.captures[1]
+end
+
+expid = 'unknown'
+if match = "#{ENV["MM_SUBJECT"]}".match(/Action Required: Expense (.*) for .*/i)
+  expid = match.captures[0]
+end
+
+                                    
+#stuff = JSON.load(open("http://api.fixer.io/latest?base=USD&symbols=NOK"))
+
+rates = `curl "http://api.fixer.io/latest?base=#{currency}&symbols=USD"`
+
+
+rate = 1.0
+if match = rates.match(/rates.*:(.*)\}\}/i)
+  rate = match.captures[0].to_f
+end
+
+inusd = "%.2f" % (rate * total)
+
+line = "#{from} - #{purpose}\ttravel\tQ4\t\t#{inusd}\t#{expid}\t#{total} #{currency}\t"
+
+former = ''
+if "#{ENV["MM_APPEND"]}" == "true"
+  former = `pbpaste`
+end
+
+#`echo #{(line + body).shellescape} | pbcopy`
+`echo #{(former).shellescape}#{(line).shellescape} | pbcopy`
+
+
+
+
+

@@ -1,0 +1,25 @@
+#!/usr/bin/ruby -w
+# encoding: UTF-8
+
+require "uri"
+uris = URI.extract(ENV['MM_LIST_INFO'])
+
+nothingfound = true
+
+mailtos = uris.select {|url| url.start_with?("mailto")}
+
+mailtos.each do |url| 
+  system("open " + url)
+  nothingfound = false
+end
+
+print nothingfound
+
+if nothingfound then
+  https = uris.select {|url| url.start_with?("http")}
+  uris.each do |url| url.start_with?("http")
+    system("open " + url)
+  end
+end
+
+
