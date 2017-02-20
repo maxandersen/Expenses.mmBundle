@@ -30,7 +30,7 @@ Then mailmate should have a `Commands > Expenses` menu where you can operate on 
 
 # Tweaking the output
 
-If the output does not look exactly as you want it you can edit https://github.com/maxandersen/Expenses.mmBundle/blob/master/Support/bin/getinfo#L49[getinfo]
+If the output does not look exactly as you want it you can edit [getinfo](Support/bin/getinfo#L49)
 
 # License
 
